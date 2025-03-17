@@ -1,5 +1,7 @@
 import About from "@/modules/About";
 import Hero from "@/modules/Hero";
+import Services from "@/modules/Services";
+import Trainers from "@/modules/Trainers";
 import React from "react";
 
 function Home() {
@@ -7,6 +9,8 @@ function Home() {
     <>
       <Hero />
       <About />
+      <Services />
+      <Trainers />
     </>
   );
 }

@@ -70,7 +70,7 @@ export default function Footer() {
           </button>
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-4 items-center">
+        <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
           <div className="flex items-center gap-6">
             <div className="flex gap-2">
               <Link
@@ -90,16 +90,6 @@ export default function Footer() {
               +998 71 200 70 07
             </Link>
           </div>
-        </div>
-
-        <div className="border-t border-[#333] my-6"></div>
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="text-gray-400 text-sm">
-            © Seven Sport Center {new Date().getFullYear()} все права защищены
-          </div>
-
-          <div className="flex justify-center"></div>
-
           <div className="flex items-center gap-2 bg-[#222222] rounded-lg px-4 py-2">
             <MapPin size={18} className="text-gray-400" />
             <span className="text-sm text-gray-300">
@@ -111,6 +101,16 @@ export default function Footer() {
             >
               Карта
             </Link>
+          </div>
+        </div>
+
+        <div className="border-t border-[#333] my-6"></div>
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="text-gray-400 text-sm">
+            © Seven Sport Center {new Date().getFullYear()} все права защищены
+          </div>
+          <div className="text-gray-400 text-sm">
+            Сайт был разработан в Texnokarvon
           </div>
         </div>
       </div>
