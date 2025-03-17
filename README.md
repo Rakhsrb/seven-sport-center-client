@@ -15,7 +15,7 @@
 
 ```sh
 git clone https://github.com/rakhsrb/seven-sport-center-client
-cd judo-club
+cd seven-sport-center-client
 ```
 
 ### 2. Установка зависимостей
