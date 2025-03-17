@@ -14,7 +14,7 @@
 ### 1. Клонирование репозитория
 
 ```sh
-git clone https://github.com/your-username/judo-club.git
+git clone https://github.com/rakhsrb/seven-sport-center-client
 cd judo-club
 ```
 
