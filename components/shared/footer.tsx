@@ -1,8 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import { Instagram, Send, ArrowUp, MapPin, Phone, Mail } from "lucide-react";
+import { Instagram, Send, ArrowUp, MapPin } from "lucide-react";
 
 export default function Footer() {
   const scrollToTop = () => {

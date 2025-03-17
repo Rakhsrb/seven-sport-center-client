@@ -2,7 +2,7 @@ import type React from "react";
 import { ArrowRight } from "lucide-react";
 
 interface ServiceCardProps {
-  icon: React.ComponentType<any>;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   title: string;
   description: string;
 }
