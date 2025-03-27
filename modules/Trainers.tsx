@@ -6,23 +6,15 @@ import { Award, Clock, Users, ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import useEmblaCarousel from "embla-carousel-react";
 import Title from "@/components/shared/Title";
+import { fetcher } from "@/middlewares/Fetcher";
+import useSWR from "swr";
+import { TrainerMember } from "@/types/RootTypes";
 
 interface TrainerProps {
-  image: string;
-  name: string;
-  level: string;
-  experience?: string;
-  clients?: string;
-  index: number;
+  member: TrainerMember;
 }
 
-const Trainer: React.FC<TrainerProps> = ({
-  image,
-  name,
-  level,
-  experience = "5+ лет",
-  clients = "200+",
-}) => {
+const Trainer: React.FC<TrainerProps> = ({ member }) => {
   return (
     <div
       className={`group bg-white overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl h-full`}
@@ -30,8 +22,8 @@ const Trainer: React.FC<TrainerProps> = ({
       <div className="relative overflow-hidden h-full">
         <div className="aspect-[3/4] overflow-hidden">
           <img
-            src={image || "/placeholder.svg"}
-            alt={name}
+            src={member.photo || "/placeholder.svg"}
+            alt={member.fullName}
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
           />
         </div>
@@ -39,22 +31,26 @@ const Trainer: React.FC<TrainerProps> = ({
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-300"></div>
 
         <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-          <h3 className="text-2xl font-bold text-white mb-2">{name}</h3>
+          <h3 className="text-2xl font-bold text-white mb-2">
+            {member.fullName}
+          </h3>
           <div className="grid grid-cols-3 gap-2 pt-4 border-t border-white/20">
             <div className="flex flex-col items-center">
               <Clock size={18} className="mb-1 text-red-500" />
               <span className="text-xs text-white/70">Tajriba</span>
-              <span className="text-sm font-semibold">{experience}</span>
+              <span className="text-sm font-semibold">{member.experience}</span>
             </div>
             <div className="flex flex-col items-center">
               <Award size={18} className="mb-1 text-red-500" />
               <span className="text-xs text-white/70">Darajasi</span>
-              <span className="text-sm font-semibold">{level}</span>
+              <span className="text-sm font-semibold">
+                {member.achievements}
+              </span>
             </div>
             <div className="flex flex-col items-center">
               <Users size={18} className="mb-1 text-red-500" />
               <span className="text-xs text-white/70">Shogirtlar soni</span>
-              <span className="text-sm font-semibold">{clients}</span>
+              <span className="text-sm font-semibold">{member.clients}</span>
             </div>
           </div>
         </div>
@@ -93,53 +89,26 @@ export default function Trainers() {
   const scrollPrev = () => emblaApi && emblaApi.scrollPrev();
   const scrollNext = () => emblaApi && emblaApi.scrollNext();
 
-  const teamMembers = [
-    {
-      image:
-        "https://preview.colorlib.com/theme/fitnessclub/assets/img/gallery/team1.png",
-      name: "Джон Сансаев",
-      position: "Силовой тренер",
-      experience: "7+ лет",
-      level: "Qora",
-      clients: "250+",
-    },
-    {
-      image:
-        "https://preview.colorlib.com/theme/fitnessclub/assets/img/gallery/team1.png",
-      name: "Алекс Петров",
-      position: "Фитнес инструктор",
-      experience: "5+ лет",
-      level: "Jigarrang",
-      clients: "180+",
-    },
-    {
-      image:
-        "https://preview.colorlib.com/theme/fitnessclub/assets/img/gallery/team1.png",
-      name: "Максим Волков",
-      position: "Креативный директор",
-      experience: "10+ лет",
-      level: "Qora",
-      clients: "300+",
-    },
-    {
-      image:
-        "https://preview.colorlib.com/theme/fitnessclub/assets/img/gallery/team1.png",
-      name: "Иван Смирнов",
-      position: "Тренер по йоге",
-      experience: "8+ лет",
-      level: "Qora",
-      clients: "220+",
-    },
-    {
-      image:
-        "https://preview.colorlib.com/theme/fitnessclub/assets/img/gallery/team1.png",
-      name: "Сергей Иванов",
-      position: "Тренер по боксу",
-      experience: "12+ лет",
-      level: "Jigarrang",
-      clients: "350+",
-    },
-  ];
+  const { data, error, isLoading } = useSWR<TrainerMember[]>(
+    `/trainer`,
+    fetcher
+  );
+
+  if (isLoading) {
+    return (
+      <div className="h-screen flex justify-center items-center">
+        <span className="h-16 w-16 border-[6px] border-dotted border-sky-600 animate-spin rounded-full"></span>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex justify-center items-center h-40">
+        <p className="text-lg font-medium text-red-600">{error}</p>
+      </div>
+    );
+  }
 
   return (
     <section className="py-16 bg-gray-50">
@@ -202,19 +171,12 @@ export default function Trainers() {
 
         <div className="overflow-hidden" ref={emblaRef}>
           <div className="flex">
-            {teamMembers.map((member, index) => (
+            {data?.map((member, index) => (
               <div
                 key={index}
                 className="flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_33.333%] p-2"
               >
-                <Trainer
-                  index={index}
-                  image={member.image}
-                  name={member.name}
-                  experience={member.experience}
-                  level={member.level}
-                  clients={member.clients}
-                />
+                <Trainer member={member} />
               </div>
             ))}
           </div>
