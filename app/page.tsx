@@ -1,4 +1,5 @@
 import About from "@/modules/About";
+import Blogs from "@/modules/Blogs";
 import Hero from "@/modules/Hero";
 import Services from "@/modules/Services";
 import Trainers from "@/modules/Trainers";
@@ -11,6 +12,7 @@ function Home() {
       <About />
       <Services />
       <Trainers />
+      <Blogs/>
     </>
   );
 }

@@ -21,8 +21,8 @@ export default function About() {
           </div>
 
           <div className="space-y-6 md:space-y-8">
-            <Title>О НАШЕМ СПОРТЗАЛЕ</Title>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#2D2356] leading-tight">
+            <Title>SPORT ZALIMIZ HAQIDA</Title>
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#2D2756] leading-tight">
               БЕЗОПАСНЫЙ СПОРТ. ПРАВИЛЬНЫЕ РЕШЕНИЯ, КОТОРЫЕ ЭКОНОМЯТ НАШЕ
               ДРАГОЦЕННОЕ ВРЕМЯ!
             </h1>
@@ -46,9 +46,9 @@ export default function About() {
               <Link href="tel:+998900021462">
                 <Button
                   variant="default"
-                  className="hidden md:flex bg-[#ff1313] hover:bg-[#ff1313]/90 text-white font-medium px-6"
+                  className="bg-red-600 hover:bg-red-700 text-white py-3 px-8 rounded-md transition-colors uppercase font-medium text-sm"
                 >
-                  Связаться
+                  Bog'lanish
                 </Button>
               </Link>
             </div>

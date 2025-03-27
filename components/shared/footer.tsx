@@ -11,52 +11,30 @@ export default function Footer() {
     });
   };
 
+  const links = [
+    { label: "Bosh sahifa", url: "/" },
+    { label: "Biz haqimizda", url: "/about" },
+    { label: "Xizmatlar", url: "/services" },
+    { label: "Jamoa", url: "/trainer" },
+    { label: "Bloglar", url: "/blogs" },
+  ];
+
   return (
     <footer className="bg-black text-white py-8">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center mb-8">
           <nav className="mb-6 md:mb-0">
             <ul className="flex flex-wrap justify-center md:justify-start gap-4 md:gap-8">
-              <li>
-                <Link
-                  href="/about"
-                  className="hover:text-gray-300 uppercase text-sm font-medium"
-                >
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services"
-                  className="hover:text-gray-300 uppercase text-sm font-medium"
-                >
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/portfolio"
-                  className="hover:text-gray-300 uppercase text-sm font-medium"
-                >
-                  Portfolio
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/career"
-                  className="hover:text-gray-300 uppercase text-sm font-medium"
-                >
-                  Career
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/blog"
-                  className="hover:text-gray-300 uppercase text-sm font-medium"
-                >
-                  Blog
-                </Link>
-              </li>
+              {links.map((link, index) => (
+                <li key={index}>
+                  <Link
+                    href={link.url}
+                    className="hover:text-gray-300 uppercase text-sm font-medium"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </nav>
 
@@ -92,13 +70,13 @@ export default function Footer() {
           <div className="flex items-center gap-2 bg-[#222222] rounded-lg px-4 py-2">
             <MapPin size={18} className="text-gray-400" />
             <span className="text-sm text-gray-300">
-              Наманган, Спортивный комплекс «Пахлавон»
+              Namangan, “Pahlavon” sport majmuasi
             </span>
             <Link
               href="#"
               className="ml-2 bg-[#333333] px-3 py-1 rounded text-xs hover:bg-gray-700 transition-colors"
             >
-              Карта
+              xarita
             </Link>
           </div>
         </div>
@@ -106,10 +84,11 @@ export default function Footer() {
         <div className="border-t border-[#333] my-6"></div>
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="text-gray-400 text-sm">
-            © Seven Sport Center {new Date().getFullYear()} все права защищены
+            © Seven Sport Center {new Date().getFullYear()} Barcha huquqlar
+            himoyalangan
           </div>
           <div className="text-gray-400 text-sm">
-            Сайт был разработан в Texnokarvon
+            Sayt Texnokarvon tomonidan ishlab chiqilgan
           </div>
         </div>
       </div>

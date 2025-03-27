@@ -28,9 +28,9 @@ export default function Services() {
     <section className="min-h-screen services py-16">
       <div className="container mx-auto h-full flex flex-col justify-center gap-10 px-6">
         <div className="w-full xl:max-w-[50%] space-y-6">
-          <Title>Наши сервисы</Title>
-          <h1 className="text-white text-4xl lg:text-6xl font-bold">
-            РАСШИРЬТЕ СВОИ ГРАНИЦЫ ВПЕРЕД МЫ ПРЕДЛАГАЕМ ВАМ
+          <Title>BIZNING XIZMATLARIMIZ</Title>
+          <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold">
+            CHEKORLARINGIZNI KENGAYTING BIZ SIZGA TAKLIF ETAMIZ
           </h1>
         </div>
 

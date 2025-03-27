@@ -8,16 +8,16 @@ function Hero() {
     <section className="hero">
       <div className="container mx-auto h-full flex items-center px-4">
         <div className="w-full xl:max-w-1/2 space-y-6">
-          <Title>с лучшими тренерами</Title>
+          <Title>eng yaxshi murabbiylar bilan</Title>
           <h1 className="text-white text-4xl lg:text-6xl font-bold">
-            Создайте идеальную форму тела для хорошей и здоровой жизни.
+            Yaxshi va sog'lom hayot uchun ideal tana shaklini yarating.
           </h1>
           <Link href="tel:+998900021462">
             <Button
               variant="default"
-              className="bg-[#ff1313] hover:bg-[#ff1313]/90 text-white font-medium px-6"
+              className="bg-red-600 hover:bg-red-700 text-white py-3 px-8 rounded-md transition-colors uppercase font-medium text-sm"
             >
-              Связаться
+              Bog'lanish
             </Button>
           </Link>
         </div>

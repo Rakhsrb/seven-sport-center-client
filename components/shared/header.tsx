@@ -12,10 +12,11 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const links = [
-  { label: "Портфолио", url: "/portfolios" },
-  { label: "О нас", url: "/about" },
-  { label: "Сервисы", url: "/services" },
-  { label: "Карьера", url: "/career" },
+  { label: "Bosh sahifa", url: "/" },
+  { label: "Biz haqimizda", url: "/about" },
+  { label: "Xizmatlar", url: "/services" },
+  { label: "Jamoa", url: "/trainer" },
+  { label: "Bloglar", url: "/blogs" },
 ];
 
 function Header() {
@@ -77,9 +78,9 @@ function Header() {
           <Link href="tel:+998900021462">
             <Button
               variant="default"
-              className="hidden md:flex bg-[#ff1313] hover:bg-[#ff1313]/90 text-white font-medium px-6"
+              className="bg-red-600 hover:bg-red-700 text-white py-3 px-8 rounded-md transition-colors uppercase font-medium text-sm"
             >
-              Связаться
+              Bog'lanish
             </Button>
           </Link>
         </div>
@@ -97,11 +98,11 @@ function Header() {
                 <div className="flex items-center justify-between">
                   <Link
                     href="/"
-                    className="flex items-center gap-2"
-                    onClick={() => setIsOpen(false)}
+                    className="flex items-center gap-2 transition-transform hover:scale-105"
                   >
                     <span className="font-bold text-white text-lg md:text-xl">
-                      Texno Karvon<span className="text-[#E94D35]">.</span>
+                      seven sport center
+                      <span className="text-[#ff1313]">.</span>
                     </span>
                   </Link>
                 </div>
@@ -126,10 +127,9 @@ function Header() {
                 <Link href="tel:+998900021462">
                   <Button
                     variant="default"
-                    className="w-full bg-[#ff1313] hover:bg-[#ff1313]/90 text-white font-medium px-6"
-                    onClick={() => setIsOpen(false)}
+                    className="bg-red-600 hover:bg-red-700 text-white py-3 px-8 rounded-md transition-colors uppercase font-medium text-sm"
                   >
-                    Связаться
+                    Bog'lanish
                   </Button>
                 </Link>
               </div>
