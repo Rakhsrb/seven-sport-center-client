@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetContent,
@@ -75,13 +74,11 @@ function Header() {
               ))}
             </ul>
           </nav>
-          <Link href="tel:+998900021462">
-            <Button
-              variant="default"
-              className="bg-red-600 hover:bg-red-700 text-white py-3 px-8 rounded-md transition-colors uppercase font-medium text-sm"
-            >
-              Bog'lanish
-            </Button>
+          <Link
+            href="tel:+998900021462"
+            className="bg-red-600 hover:bg-red-700 text-white py-3 px-8 rounded-md transition-colors uppercase font-medium text-sm"
+          >
+            Bog&apos;lanish
           </Link>
         </div>
 
@@ -124,13 +121,11 @@ function Header() {
                 </ul>
               </nav>
               <div className="p-6 border-t border-[#323232]">
-                <Link href="tel:+998900021462">
-                  <Button
-                    variant="default"
-                    className="bg-red-600 hover:bg-red-700 text-white py-3 px-8 rounded-md transition-colors uppercase font-medium text-sm"
-                  >
-                    Bog'lanish
-                  </Button>
+                <Link
+                  href="tel:+998900021462"
+                  className="bg-red-600 hover:bg-red-700 text-white py-3 px-8 rounded-md transition-colors uppercase font-medium text-sm"
+                >
+                  Bog&apos;lanish
                 </Link>
               </div>
             </div>
