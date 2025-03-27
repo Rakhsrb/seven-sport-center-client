@@ -49,7 +49,7 @@ function Header() {
       }`}
       style={headerStyle}
     >
-      <div className="container mx-auto h-20 px-6 flex items-center justify-between">
+      <div className="container mx-auto h-20 px-6 flex items-center justify-between gap-4">
         <Link
           href="/"
           className="flex items-center gap-2 transition-transform hover:scale-105"

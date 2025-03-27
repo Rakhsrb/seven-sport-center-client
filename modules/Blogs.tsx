@@ -11,21 +11,6 @@ export default function Blogs() {
     fetcher
   );
 
-  if (isLoading) {
-    return (
-      <div className="h-screen flex justify-center items-center">
-        <span className="h-16 w-16 border-[6px] border-dotted border-sky-600 animate-spin rounded-full"></span>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="flex justify-center items-center h-40">
-        <p className="text-lg font-medium text-red-600">{error}</p>
-      </div>
-    );
-  }
   return (
     <div className="container mx-auto py-16 px-4">
       <div className="text-center mb-12">
@@ -42,65 +27,79 @@ export default function Blogs() {
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {data?.map((blog, index) => (
-          <div
-            key={index}
-            className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300"
-          >
-            <Link href={`/blog/${blog.id || "#"}`}>
-              <div className="overflow-hidden">
-                <img
-                  src={blog.photos[0] || "/placeholder.svg"}
-                  alt={blog.title}
-                  className="w-full aspect-[4/3] object-cover transition-transform hover:scale-105 duration-500"
-                />
-              </div>
-            </Link>
+      {isLoading && (
+        <div className="h-[40vh] flex justify-center items-center">
+          <span className="h-16 w-16 border-[6px] border-dotted border-red-600 animate-spin rounded-full"></span>
+        </div>
+      )}
 
-            <div className="p-5 bg-gray-50">
-              {blog.createdAt && (
-                <span className="text-gray-600 text-sm block mb-2">
-                  {blog.createdAt
-                    ? new Date(blog.createdAt).toLocaleDateString()
-                    : ""}
-                </span>
-              )}
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
+      {error && (
+        <div className="flex justify-center items-center h-40">
+          <p className="text-lg font-medium text-red-600">{error}</p>
+        </div>
+      )}
+
+      {data && (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {data?.map((blog, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300"
+            >
+              <Link href={`/blog/${blog.id || "#"}`}>
+                <div className="overflow-hidden">
+                  <img
+                    src={blog.photos[0] || "/placeholder.svg"}
+                    alt={blog.title}
+                    className="w-full aspect-[4/3] object-cover transition-transform hover:scale-105 duration-500"
+                  />
+                </div>
+              </Link>
+
+              <div className="p-5 bg-gray-50">
+                {blog.createdAt && (
+                  <span className="text-gray-600 text-sm block mb-2">
+                    {blog.createdAt
+                      ? new Date(blog.createdAt).toLocaleDateString()
+                      : ""}
+                  </span>
+                )}
+                <h3 className="text-xl font-bold text-gray-900 mb-2">
+                  <Link
+                    href={`/blog/${blog.id || "#"}`}
+                    className="hover:text-red-600 transition-colors duration-300"
+                  >
+                    {blog.title}
+                  </Link>
+                </h3>
+                <p className="text-gray-600 line-clamp-2 mb-3">
+                  {blog.description}
+                </p>
                 <Link
                   href={`/blog/${blog.id || "#"}`}
-                  className="hover:text-red-600 transition-colors duration-300"
+                  className="text-red-600 font-medium inline-flex items-center hover:text-red-700"
                 >
-                  {blog.title}
+                  Batafsil
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="ml-1"
+                  >
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
                 </Link>
-              </h3>
-              <p className="text-gray-600 line-clamp-2 mb-3">
-                {blog.description}
-              </p>
-              <Link
-                href={`/blog/${blog.id || "#"}`}
-                className="text-red-600 font-medium inline-flex items-center hover:text-red-700"
-              >
-                Batafsil
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="ml-1"
-                >
-                  <polyline points="9 18 15 12 9 6"></polyline>
-                </svg>
-              </Link>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
 
       <div className="text-center mt-12">
         <Link

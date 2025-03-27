@@ -38,19 +38,21 @@ const Trainer: React.FC<TrainerProps> = ({ member }) => {
             <div className="flex flex-col items-center">
               <Clock size={18} className="mb-1 text-red-500" />
               <span className="text-xs text-white/70">Tajriba</span>
-              <span className="text-sm font-semibold">{member.experience}</span>
+              <span className="text-xs font-semibold">
+                {member.experience} Yil
+              </span>
             </div>
             <div className="flex flex-col items-center">
               <Award size={18} className="mb-1 text-red-500" />
               <span className="text-xs text-white/70">Darajasi</span>
-              <span className="text-sm font-semibold">
+              <span className="text-xs font-semibold">
                 {member.achievements}
               </span>
             </div>
             <div className="flex flex-col items-center">
               <Users size={18} className="mb-1 text-red-500" />
               <span className="text-xs text-white/70">Shogirtlar soni</span>
-              <span className="text-sm font-semibold">{member.clients}</span>
+              <span className="text-xs font-semibold">{member.clients}</span>
             </div>
           </div>
         </div>
@@ -93,22 +95,6 @@ export default function Trainers() {
     `/trainer`,
     fetcher
   );
-
-  if (isLoading) {
-    return (
-      <div className="h-screen flex justify-center items-center">
-        <span className="h-16 w-16 border-[6px] border-dotted border-sky-600 animate-spin rounded-full"></span>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="flex justify-center items-center h-40">
-        <p className="text-lg font-medium text-red-600">{error}</p>
-      </div>
-    );
-  }
 
   return (
     <section className="py-16 bg-gray-50">
@@ -169,18 +155,32 @@ export default function Trainers() {
           </div>
         </div>
 
-        <div className="overflow-hidden" ref={emblaRef}>
-          <div className="flex">
-            {data?.map((member, index) => (
-              <div
-                key={index}
-                className="flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_33.333%] p-2"
-              >
-                <Trainer member={member} />
-              </div>
-            ))}
+        {isLoading && (
+          <div className="h-[40vh] flex justify-center items-center">
+            <span className="h-16 w-16 border-[6px] border-dotted border-red-600 animate-spin rounded-full"></span>
           </div>
-        </div>
+        )}
+
+        {error && (
+          <div className="flex justify-center items-center h-40">
+            <p className="text-lg font-medium text-red-600">{error}</p>
+          </div>
+        )}
+
+        {data && (
+          <div className="overflow-hidden" ref={emblaRef}>
+            <div className="flex">
+              {data?.map((member, index) => (
+                <div
+                  key={index}
+                  className="flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_33.333%] p-2"
+                >
+                  <Trainer member={member} />
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
