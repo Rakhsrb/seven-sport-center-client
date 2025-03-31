@@ -9,17 +9,18 @@ import {
 import { Menu } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const links = [
-  { label: "Bosh sahifa", url: "/" },
-  { label: "Biz haqimizda", url: "/about" },
-  { label: "Xizmatlar", url: "/services" },
-  { label: "Jamoa", url: "/trainer" },
-  { label: "Bloglar", url: "/blogs" },
+  { label: "BOSH SAHIFA", url: "/" },
+  { label: "BIZ HAQIMIZDA", url: "/about" },
+  { label: "XIZMATLAR", url: "/services" },
+  { label: "BLOGLAR", url: "/blogs" },
 ];
 
 function Header() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [visible, setVisible] = useState(true);
@@ -46,7 +47,7 @@ function Header() {
   return (
     <header
       className={`fixed left-0 top-0 z-50 w-full transition-all ${
-        scrollY >= 300 ? "bg-black" : "bg-transparent"
+        pathname !== "/" || scrollY >= 300 ? "bg-black" : "bg-transparent"
       }`}
       style={headerStyle}
     >
@@ -56,9 +57,8 @@ function Header() {
           className="flex items-center gap-2 transition-transform hover:scale-105"
         >
           <Image
-            src={"./mainlogo.png"}
+            src={"/mainlogo.png"}
             alt={"seven sport center logo"}
-            unoptimized={true}
             width={"50"}
             height={"50"}
           />
@@ -103,9 +103,8 @@ function Header() {
                     className="flex items-center gap-2 transition-transform hover:scale-105"
                   >
                     <Image
-                      src={"./mainlogo.png"}
+                      src={"/mainlogo.png"}
                       alt={"seven sport center logo"}
-                      unoptimized={true}
                       width={"50"}
                       height={"50"}
                     />

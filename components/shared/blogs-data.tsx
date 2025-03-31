@@ -2,9 +2,7 @@ import { BlogPost } from "@/types/RootTypes";
 
 export async function getBlogs(): Promise<BlogPost[]> {
   try {
-    const response = await fetch(`http://localhost:3001/api/blog`, {
-      next: { revalidate: 3600 },
-    });
+    const response = await fetch(`http://localhost:3001/api/blog`);
 
     if (!response.ok) {
       throw new Error("Failed to fetch blogs");

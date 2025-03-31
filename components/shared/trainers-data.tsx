@@ -2,9 +2,7 @@ import { TrainerMember } from "@/types/RootTypes";
 
 export async function getTrainers(): Promise<TrainerMember[]> {
   try {
-    const response = await fetch(`http://localhost:3001/api/trainer`, {
-      next: { revalidate: 3600 },
-    });
+    const response = await fetch(`http://localhost:3001/api/trainer`);
 
     if (!response.ok) {
       throw new Error("Failed to fetch trainers");

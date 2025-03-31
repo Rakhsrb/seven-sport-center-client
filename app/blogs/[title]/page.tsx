@@ -1,8 +1,10 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
-import { ArrowLeft } from "lucide-react";
-import Link from "next/link";
 import type { BlogPost } from "@/types/RootTypes";
+import { Breadcrumb } from "@/components/shared/breadcrumb";
+import { CalendarIcon } from "lucide-react";
+import { formatDate } from "@/lib/utils";
+import { ImageGallery } from "@/components/shared/image-gallery";
 
 type PageParams = {
   params: {
@@ -48,24 +50,36 @@ async function BlogContent({ title }: { title: string }) {
     const blogPost: BlogPost = data[0];
 
     return (
-      <div className="max-w-5xl mx-auto px-4 space-y-8">
-        <div className="flex justify-between items-center">
-          <Link
-            href="/blogs"
-            className="flex items-center text-gray-400 hover:text-white transition-colors"
-          >
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Назад к блогам
-          </Link>
-        </div>
+      <article className="max-w-5xl mx-auto space-y-8">
+        <Breadcrumb />
 
         <div className="space-y-6">
-          <h1 className="text-4xl md:text-6xl font-bold">{blogPost.title}</h1>
-          <p className="text-gray-400 text-lg leading-relaxed">
+          <div className="space-y-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">
+              {blogPost.title}
+            </h1>
+
+            <div className="flex flex-wrap gap-4 text-sm text-gray-500 dark:text-gray-400">
+              {blogPost.createdAt && (
+                <div className="flex items-center">
+                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  <time dateTime={blogPost.createdAt}>
+                    {formatDate(blogPost.createdAt)}
+                  </time>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {blogPost.photos && blogPost.photos.length > 0 && (
+            <ImageGallery images={blogPost.photos} alt={blogPost.title} />
+          )}
+
+          <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
             {blogPost.description}
           </p>
         </div>
-      </div>
+      </article>
     );
   } catch (error) {
     console.error(error);
@@ -82,15 +96,13 @@ async function BlogContent({ title }: { title: string }) {
 }
 
 export default function BlogDetail({ params }: PageParams) {
+  const decodedTitle = decodeURIComponent(params.title);
+
   return (
     <>
-      <div className="h-[30vh] flex items-center justify-center flex-col bg-black">
-        <h1 className="text-white font-bold text-4xl">BLOGLAR</h1>
-      </div>
-
-      <div className="container mx-auto py-16 px-6">
+      <div className="container mx-auto py-24 px-6">
         <Suspense fallback={<BlogSkeleton />}>
-          <BlogContent title={params.title} />
+          <BlogContent title={decodedTitle} />
         </Suspense>
       </div>
     </>

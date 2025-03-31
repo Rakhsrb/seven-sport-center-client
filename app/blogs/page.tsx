@@ -11,7 +11,7 @@ function page() {
   return (
     <>
       <div className="h-[30vh] flex items-center justify-center flex-col bg-black">
-        <h1 className="text-white font-bold text-4xl">BLOGAR</h1>
+        <h1 className="text-white font-bold text-4xl">BLOGLAR</h1>
       </div>
       <BlogsModule />
     </>

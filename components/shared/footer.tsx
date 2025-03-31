@@ -15,7 +15,6 @@ export default function Footer() {
     { label: "Bosh sahifa", url: "/" },
     { label: "Biz haqimizda", url: "/about" },
     { label: "Xizmatlar", url: "/services" },
-    { label: "Jamoa", url: "/trainer" },
     { label: "Bloglar", url: "/blogs" },
   ];
 
