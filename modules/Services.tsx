@@ -5,21 +5,21 @@ import { Clock, Dumbbell, Heart } from "lucide-react";
 const SERVICES = [
   {
     icon: Dumbbell,
-    title: "Качественное Оборудование",
+    title: "Professional Trening Uskunalari",
     description:
-      "Тренируйтесь на современном фитнес-оборудовании, разработанном для оптимальной производительности и безопасности. Мы инвестируем в премиальные тренажеры для улучшения вашего тренировочного опыта.",
+      "Bolalarimiz uchun xavfsiz va zamonaviy sport jihozlari bilan jihozlangan zal. Trening samaradorligini oshirish uchun eng yaxshi sharoitlarni taqdim etamiz.",
   },
   {
     icon: Heart,
-    title: "Забота о Здоровье",
+    title: "Sog‘lom Turmush Tarzi",
     description:
-      "Наш подход сосредоточен на вашем общем благополучии, а не только на физической форме. Мы предоставляем персонализированное руководство, чтобы помочь вам достичь устойчивых улучшений здоровья.",
+      "Dzyudo nafaqat jismoniy kuch, balki sog‘lom turmush tarzining asosi. Bolalarning umumiy rivojlanishiga ko‘maklashamiz va ularni mustahkam iroda bilan tarbiyalaymiz.",
   },
   {
     icon: Clock,
-    title: "Стратегии Тренировок",
+    title: "Samarali Mashg‘ulot Dasturlari",
     description:
-      "Максимизируйте свои результаты с экспертно разработанными планами тренировок, адаптированными под ваши цели. Наши тренеры разрабатывают эффективные стратегии для оптимизации вашего времени в тренажерном зале.",
+      "Har bir bola uchun individual yondashuv! Mashg‘ulot dasturlarimiz dzyudo texnikalarini mukammal egallash va sport natijalarini yaxshilashga qaratilgan.",
   },
 ];
 
@@ -30,7 +30,7 @@ export default function Services() {
         <div className="w-full xl:max-w-[50%] space-y-6">
           <Title>BIZNING XIZMATLARIMIZ</Title>
           <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold">
-            CHEKORLARINGIZNI KENGAYTING BIZ SIZGA TAKLIF ETAMIZ
+            BIZ SIZGA NIMALARNI TAKLIF ETAMIZ
           </h1>
         </div>
 

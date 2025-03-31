@@ -1,5 +1,6 @@
 import type React from "react";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 interface ServiceCardProps {
   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
@@ -30,10 +31,10 @@ export function ServiceCard({
 
         <p className="text-gray-600 mb-6 flex-grow">{description}</p>
 
-        <button className="flex items-center text-sm font-medium text-gray-700 group-hover:text-red-600 transition-colors duration-300">
-          Узнать больше
+        <Link href={'/services'} className="flex items-center text-sm font-medium text-gray-700 group-hover:text-red-600 transition-colors duration-300">
+          Batafsil
           <ArrowRight className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" />
-        </button>
+        </Link>
       </div>
 
       <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gray-300 to-transparent group-hover:via-red-500 transition-colors duration-300"></div>
