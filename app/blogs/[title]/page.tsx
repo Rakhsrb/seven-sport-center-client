@@ -1,18 +1,19 @@
 import { Suspense } from "react";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import { BlogPost } from "@/types/RootTypes";
+import type { BlogPost } from "@/types/RootTypes";
 
-interface BlogDetailProps {
+type PageParams = {
   params: {
     title: string;
   };
-}
+  searchParams: Record<string, string | string[] | undefined>;
+};
 
 export async function generateMetadata({
   params,
-}: BlogDetailProps): Promise<Metadata> {
+}: PageParams): Promise<Metadata> {
   const title = decodeURIComponent(params.title);
   return {
     title: `Bloglar | ${title}`,
@@ -50,7 +51,7 @@ async function BlogContent({ title }: { title: string }) {
       <div className="max-w-5xl mx-auto px-4 space-y-8">
         <div className="flex justify-between items-center">
           <Link
-            href="/blog"
+            href="/blogs"
             className="flex items-center text-gray-400 hover:text-white transition-colors"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
@@ -80,7 +81,7 @@ async function BlogContent({ title }: { title: string }) {
   }
 }
 
-export default function BlogDetail({ params }: BlogDetailProps) {
+export default function BlogDetail({ params }: PageParams) {
   return (
     <>
       <div className="h-[30vh] flex items-center justify-center flex-col bg-black">
