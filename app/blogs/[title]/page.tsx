@@ -5,33 +5,23 @@ import { Breadcrumb } from "@/components/shared/breadcrumb";
 import { CalendarIcon } from "lucide-react";
 import { formatDate } from "@/lib/utils";
 import { ImageGallery } from "@/components/shared/image-gallery";
+import BlogsModuleSkeleton from "@/components/shared/blogs-module-skeleton";
 
-type PageParams = {
+interface PageParams {
   params: { title: string };
-};
+}
 
 export async function generateMetadata({
   params,
 }: PageParams): Promise<Metadata> {
-  const title = params?.title ? decodeURIComponent(params.title) : "Bloglar";
-  return {
-    title: `Bloglar | ${title}`,
-  };
-}
-
-function BlogSkeleton() {
-  return (
-    <div className="h-[40vh] flex justify-center items-center">
-      <span className="h-16 w-16 border-[6px] border-dotted border-red-600 animate-spin rounded-full"></span>
-    </div>
-  );
+  const title = decodeURIComponent(params.title);
+  return { title: `Bloglar | ${title}` };
 }
 
 async function BlogContent({ title }: { title: string }) {
   try {
     const response = await fetch(
-      `http://localhost:3001/api/blog?title=${encodeURIComponent(title)}`,
-      { cache: "no-store" }
+      `http://localhost:3001/api/blog?title=${encodeURIComponent(title)}`
     );
 
     if (!response.ok) throw new Error("Failed to fetch blog data");
@@ -88,7 +78,7 @@ async function BlogContent({ title }: { title: string }) {
 export default function BlogDetail({ params }: PageParams) {
   return (
     <div className="container mx-auto py-24 px-6">
-      <Suspense fallback={<BlogSkeleton />}>
+      <Suspense fallback={<BlogsModuleSkeleton />}>
         <BlogContent title={decodeURIComponent(params.title)} />
       </Suspense>
     </div>
