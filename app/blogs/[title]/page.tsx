@@ -4,70 +4,19 @@ import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { BlogPost } from "@/types/RootTypes";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { title: string };
-}): Promise<Metadata> {
-  const { title } = await params;
-  return {
-    title: `Bloglar | ${decodeURIComponent(title)}`,
+interface BlogDetailProps {
+  params: {
+    title: string;
   };
 }
 
-async function BlogContent({ title }: { title: string }) {
-  try {
-    const response = await fetch(
-      `http://localhost:3001/api/blog?title=${encodeURIComponent(title)}`
-    );
-
-    if (!response.ok) {
-      throw new Error("Failed to fetch blog data");
-    }
-
-    const malumot = await response.json();
-
-    const template: BlogPost = malumot[0];
-
-    return (
-      <>
-        <div className="max-w-5xl mx-auto px-4 space-y-8">
-          <div className="flex justify-between items-center">
-            <Link
-              href="/blog"
-              className="flex items-center text-gray-400 hover:text-white transition-colors"
-            >
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Назад к портфолио
-            </Link>
-          </div>
-
-          <div className="space-y-6">
-            <div className="flex flex-wrap justify-between items-center gap-4">
-              <h1 className="text-4xl md:text-6xl font-bold">
-                {template.title}
-              </h1>
-            </div>
-
-            <p className="text-gray-400 text-lg leading-relaxed">
-              {template.description}
-            </p>
-          </div>
-        </div>
-      </>
-    );
-  } catch (error) {
-    console.log(error);
-    return (
-      <div className="max-w-5xl mx-auto">
-        <h3>Ошибка</h3>
-        <p>
-          Не удалось загрузить данные портфолио. Пожалуйста, попробуйте позже
-          или свяжитесь с администратором.
-        </p>
-      </div>
-    );
-  }
+export async function generateMetadata({
+  params,
+}: BlogDetailProps): Promise<Metadata> {
+  const title = decodeURIComponent(params.title);
+  return {
+    title: `Bloglar | ${title}`,
+  };
 }
 
 function BlogSkeleton() {
@@ -78,12 +27,66 @@ function BlogSkeleton() {
   );
 }
 
-export default function BlogDetail({ params }: { params: { title: string } }) {
+async function BlogContent({ title }: { title: string }) {
+  try {
+    const response = await fetch(
+      `http://localhost:3001/api/blog?title=${encodeURIComponent(title)}`,
+      { cache: "no-store" }
+    );
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch blog data");
+    }
+
+    const data = await response.json();
+
+    if (!data || data.length === 0) {
+      throw new Error("Blog post not found");
+    }
+
+    const blogPost: BlogPost = data[0];
+
+    return (
+      <div className="max-w-5xl mx-auto px-4 space-y-8">
+        <div className="flex justify-between items-center">
+          <Link
+            href="/blog"
+            className="flex items-center text-gray-400 hover:text-white transition-colors"
+          >
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Назад к блогам
+          </Link>
+        </div>
+
+        <div className="space-y-6">
+          <h1 className="text-4xl md:text-6xl font-bold">{blogPost.title}</h1>
+          <p className="text-gray-400 text-lg leading-relaxed">
+            {blogPost.description}
+          </p>
+        </div>
+      </div>
+    );
+  } catch (error) {
+    console.error(error);
+    return (
+      <div className="max-w-5xl mx-auto text-center">
+        <h3 className="text-2xl font-bold text-red-600">Ошибка</h3>
+        <p className="text-gray-400">
+          Не удалось загрузить данные блога. Пожалуйста, попробуйте позже или
+          свяжитесь с администратором.
+        </p>
+      </div>
+    );
+  }
+}
+
+export default function BlogDetail({ params }: BlogDetailProps) {
   return (
     <>
       <div className="h-[30vh] flex items-center justify-center flex-col bg-black">
         <h1 className="text-white font-bold text-4xl">BLOGLAR</h1>
       </div>
+
       <div className="container mx-auto py-16 px-6">
         <Suspense fallback={<BlogSkeleton />}>
           <BlogContent title={params.title} />
