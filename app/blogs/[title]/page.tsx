@@ -7,16 +7,13 @@ import { formatDate } from "@/lib/utils";
 import { ImageGallery } from "@/components/shared/image-gallery";
 
 type PageParams = {
-  params: {
-    title: string;
-  };
-  searchParams: Record<string, string | string[] | undefined>;
+  params: { title: string };
 };
 
 export async function generateMetadata({
   params,
 }: PageParams): Promise<Metadata> {
-  const title = decodeURIComponent(params.title);
+  const title = params?.title ? decodeURIComponent(params.title) : "Bloglar";
   return {
     title: `Bloglar | ${title}`,
   };
@@ -37,15 +34,10 @@ async function BlogContent({ title }: { title: string }) {
       { cache: "no-store" }
     );
 
-    if (!response.ok) {
-      throw new Error("Failed to fetch blog data");
-    }
+    if (!response.ok) throw new Error("Failed to fetch blog data");
 
     const data = await response.json();
-
-    if (!data || data.length === 0) {
-      throw new Error("Blog post not found");
-    }
+    if (!data || data.length === 0) throw new Error("Blog post not found");
 
     const blogPost: BlogPost = data[0];
 
@@ -59,19 +51,17 @@ async function BlogContent({ title }: { title: string }) {
               {blogPost.title}
             </h1>
 
-            <div className="flex flex-wrap gap-4 text-sm text-gray-500 dark:text-gray-400">
-              {blogPost.createdAt && (
-                <div className="flex items-center">
-                  <CalendarIcon className="mr-2 h-4 w-4" />
-                  <time dateTime={blogPost.createdAt}>
-                    {formatDate(blogPost.createdAt)}
-                  </time>
-                </div>
-              )}
-            </div>
+            {blogPost.createdAt && (
+              <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                <CalendarIcon className="mr-2 h-4 w-4" />
+                <time dateTime={blogPost.createdAt}>
+                  {formatDate(blogPost.createdAt)}
+                </time>
+              </div>
+            )}
           </div>
 
-          {blogPost.photos && blogPost.photos.length > 0 && (
+          {blogPost.photos?.length > 0 && (
             <ImageGallery images={blogPost.photos} alt={blogPost.title} />
           )}
 
@@ -82,13 +72,13 @@ async function BlogContent({ title }: { title: string }) {
       </article>
     );
   } catch (error) {
-    console.error(error);
+    console.error("Ошибка загрузки блога:", error);
     return (
       <div className="max-w-5xl mx-auto text-center">
         <h3 className="text-2xl font-bold text-red-600">Ошибка</h3>
         <p className="text-gray-400">
-          Не удалось загрузить данные блога. Пожалуйста, попробуйте позже или
-          свяжитесь с администратором.
+          Не удалось загрузить данные блога. Попробуйте позже или свяжитесь с
+          администратором.
         </p>
       </div>
     );
@@ -96,15 +86,11 @@ async function BlogContent({ title }: { title: string }) {
 }
 
 export default function BlogDetail({ params }: PageParams) {
-  const decodedTitle = decodeURIComponent(params.title);
-
   return (
-    <>
-      <div className="container mx-auto py-24 px-6">
-        <Suspense fallback={<BlogSkeleton />}>
-          <BlogContent title={decodedTitle} />
-        </Suspense>
-      </div>
-    </>
+    <div className="container mx-auto py-24 px-6">
+      <Suspense fallback={<BlogSkeleton />}>
+        <BlogContent title={decodeURIComponent(params.title)} />
+      </Suspense>
+    </div>
   );
 }
