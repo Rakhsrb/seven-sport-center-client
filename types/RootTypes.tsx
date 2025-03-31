@@ -1,5 +1,5 @@
 export interface BlogPost {
-  id?: string;
+  _id?: string;
   photos: string[];
   title: string;
   description: string;

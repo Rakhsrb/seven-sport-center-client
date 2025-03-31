@@ -7,6 +7,7 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -54,9 +55,13 @@ function Header() {
           href="/"
           className="flex items-center gap-2 transition-transform hover:scale-105"
         >
-          <span className="font-bold text-white text-lg md:text-xl">
-            seven sport center<span className="text-[#ff1313]">.</span>
-          </span>
+          <Image
+            src={"./mainlogo.png"}
+            alt={"seven sport center logo"}
+            unoptimized={true}
+            width={"50"}
+            height={"50"}
+          />
         </Link>
 
         <div className="flex items-center gap-8">
@@ -97,10 +102,13 @@ function Header() {
                     href="/"
                     className="flex items-center gap-2 transition-transform hover:scale-105"
                   >
-                    <span className="font-bold text-white text-lg md:text-xl">
-                      seven sport center
-                      <span className="text-[#ff1313]">.</span>
-                    </span>
+                    <Image
+                      src={"./mainlogo.png"}
+                      alt={"seven sport center logo"}
+                      unoptimized={true}
+                      width={"50"}
+                      height={"50"}
+                    />
                   </Link>
                 </div>
               </div>

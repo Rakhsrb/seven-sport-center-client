@@ -1,15 +1,33 @@
-"use client";
-
-import { fetcher } from "@/middlewares/Fetcher";
-import { BlogPost } from "@/types/RootTypes";
+import BlogsData from "@/components/shared/blogs-data";
+import BlogsModuleSkeleton from "@/components/shared/blogs-module-skeleton";
+import Image from "next/image";
 import Link from "next/link";
-import useSWR from "swr";
+import { Suspense } from "react";
 
-export default function Blogs() {
-  const { data, error, isLoading } = useSWR<BlogPost[] | undefined>(
-    `/blog`,
-    fetcher
+export default async function TrainersModule() {
+  return (
+    <Suspense fallback={<BlogsModuleSkeleton />}>
+      <BlogsModuleInner />
+    </Suspense>
   );
+}
+
+async function BlogsModuleInner() {
+  const { blogs } = await BlogsData();
+
+  if (!blogs || blogs.length === 0) {
+    return (
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-center items-center h-40">
+            <p className="text-lg font-medium text-red-600">
+              No trainers found
+            </p>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <div className="container mx-auto py-16 px-4">
@@ -27,30 +45,21 @@ export default function Blogs() {
         </h2>
       </div>
 
-      {isLoading && (
-        <div className="h-[40vh] flex justify-center items-center">
-          <span className="h-16 w-16 border-[6px] border-dotted border-red-600 animate-spin rounded-full"></span>
-        </div>
-      )}
-
-      {error && (
-        <div className="flex justify-center items-center h-40">
-          <p className="text-lg font-medium text-red-600">{error}</p>
-        </div>
-      )}
-
-      {data && (
+      {blogs && blogs.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {data?.map((blog, index) => (
+          {blogs.map((blog, index) => (
             <div
               key={index}
               className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300"
             >
-              <Link href={`/blog/${blog.id || "#"}`}>
+              <Link href={`/blogs/${blog.title || "#"}`}>
                 <div className="overflow-hidden">
-                  <img
-                    src={blog.photos[0] || "/placeholder.svg"}
+                  <Image
+                    src={blog.photos?.[0] || "/placeholder.svg"}
                     alt={blog.title}
+                    unoptimized={true}
+                    width={"100"}
+                    height={"100"}
                     className="w-full aspect-[4/3] object-cover transition-transform hover:scale-105 duration-500"
                   />
                 </div>
@@ -66,7 +75,7 @@ export default function Blogs() {
                 )}
                 <h3 className="text-xl font-bold text-gray-900 mb-2">
                   <Link
-                    href={`/blog/${blog.id || "#"}`}
+                    href={`/blogs/${blog.title || "#"}`}
                     className="hover:text-red-600 transition-colors duration-300"
                   >
                     {blog.title}
@@ -76,7 +85,7 @@ export default function Blogs() {
                   {blog.description}
                 </p>
                 <Link
-                  href={`/blog/${blog.id || "#"}`}
+                  href={`/blogs/${blog.title || "#"}`}
                   className="text-red-600 font-medium inline-flex items-center hover:text-red-700"
                 >
                   Batafsil
@@ -98,6 +107,12 @@ export default function Blogs() {
               </div>
             </div>
           ))}
+        </div>
+      ) : (
+        <div className="flex justify-center items-center h-40">
+          <p className="text-lg font-medium text-red-600">
+            No blog posts found
+          </p>
         </div>
       )}
 
