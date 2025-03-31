@@ -9,12 +9,9 @@ export const metadata: Metadata = {
 
 function page() {
   return (
-    <>
-      <div className="h-[30vh] flex items-center justify-center flex-col bg-black">
-        <h1 className="text-white font-bold text-4xl">BLOGLAR</h1>
-      </div>
+    <main className="py-20">
       <BlogsModule />
-    </>
+    </main>
   );
 }
 

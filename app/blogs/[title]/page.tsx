@@ -5,7 +5,6 @@ import { Breadcrumb } from "@/components/shared/breadcrumb";
 import { CalendarIcon } from "lucide-react";
 import { formatDate } from "@/lib/utils";
 import { ImageGallery } from "@/components/shared/image-gallery";
-import BlogsModuleSkeleton from "@/components/shared/blogs-module-skeleton";
 
 interface PageParams {
   params: { title: string };
@@ -78,7 +77,13 @@ async function BlogContent({ title }: { title: string }) {
 export default function BlogDetail({ params }: PageParams) {
   return (
     <div className="container mx-auto py-24 px-6">
-      <Suspense fallback={<BlogsModuleSkeleton />}>
+      <Suspense
+        fallback={
+          <div className="h-[80vh] flex justify-center items-center">
+            <span className="h-16 w-16 border-[6px] border-dotted border-red-600 animate-spin rounded-full"></span>
+          </div>
+        }
+      >
         <BlogContent title={decodeURIComponent(params.title)} />
       </Suspense>
     </div>

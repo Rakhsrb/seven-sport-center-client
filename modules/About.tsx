@@ -11,7 +11,7 @@ export default function About() {
             <div className="bg-red-700 rounded-full absolute inset-0 max-w-[600px] max-h-[600px]" />
             <Image
               src="/about.png"
-              alt="Fitness trainer with battle ropes"
+              alt="Dzyudo klubi haqida"
               width={600}
               height={800}
               className="w-full object-cover relative"
@@ -20,24 +20,25 @@ export default function About() {
           </div>
 
           <div className="space-y-6 md:space-y-8">
-            <Title>SPORT ZALIMIZ HAQIDA</Title>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#2D2756] leading-tight">
-              БЕЗОПАСНЫЙ СПОРТ. ПРАВИЛЬНЫЕ РЕШЕНИЯ, КОТОРЫЕ ЭКОНОМЯТ НАШЕ
-              ДРАГОЦЕННОЕ ВРЕМЯ!
+            <Title>DZYUDO KLUBIMIZ HAQIDA</Title>
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#2D2756] leading-tight">
+              XAVFSIZ SPORT MUHITI. BOLALARNING JISMONIY VA MA'NAVIY
+              RIVOJLANISHI UCHUN ENG YAXSHI TANLOV!
             </h1>
 
             <div className="space-y-4 text-gray-700">
               <p>
-                Brook представляет ваши услуги с гибкими, удобными и cdpose
-                макетами. Вы можете выбрать ваши любимые макеты и элементы для
-                cular ts с неограниченными возможностями настройки.
-                Предполагается пиксельное копирование дизайнеров.
+                Namanngan shahridagi dzyudo klubi bolalar uchun sport va
+                tarbiyaning mukammal uyg'unligini taqdim etadi. Bizning malakali
+                murabbiylarimiz har bir yosh sportchiga maxsus yondashuv bilan
+                shug'ullanadi.
               </p>
 
               <p>
-                Brook представляет ваши услуги с помощью гибких, удобных и
-                многофункциональных макетов. Вы можете выбрать свои любимые
-                макеты.
+                Dzyudo nafaqat jismoniy tarbiya, balki intizom, hurmat va
+                irodani shakllantirishga yordam beradi. Klubimizda farzandingiz
+                sport bilan shug'ullanishi va sog'lom hayot tarzini
+                shakllantirishi mumkin.
               </p>
             </div>
 

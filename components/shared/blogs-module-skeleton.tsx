@@ -5,13 +5,14 @@ export default function BlogsModuleSkeleton() {
         <div className="flex justify-center items-center mb-4">
           <div className="w-16 h-[2px] bg-red-600"></div>
           <span className="mx-4 text-red-600 uppercase text-sm font-medium">
-            BLOGDAN SO&apos;NGI YANGILIKLAR
+            YANGILIKLAR
           </span>
           <div className="w-16 h-[2px] bg-red-600"></div>
         </div>
 
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#2D2756] max-w-3xl mx-auto leading-tight">
-          SIZ UCHUN BIZ TANLAGAN DZYUDO MASLAHATLARI
+          DZYUDO BO&apos;YICHA ENG SO&apos;NGGI YANGILIKLAR VA FOYDALI
+          MASLAHATLAR
         </h2>
       </div>
 
