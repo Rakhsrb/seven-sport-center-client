@@ -7,47 +7,26 @@ import { formatDate } from "@/lib/utils";
 import { ImageGallery } from "@/components/shared/image-gallery";
 
 // Define the params type
-type Params = {
+type BlogParams = {
   title: string;
 };
 
-// Metadata generation
+// For Next.js 15, we need to use the correct type for generateMetadata
 export async function generateMetadata({
   params,
 }: {
-  params: Params;
+  params: BlogParams;
 }): Promise<Metadata> {
-  return {
-    title: `BLOGLAR | ${decodeURIComponent(params.title)}`,
-  };
-}
-
-// Main page component
-export default function Page({ params }: { params: Params }) {
   const title = decodeURIComponent(params.title);
-
-  return (
-    <div className="container mx-auto py-24 px-6">
-      <Suspense
-        fallback={
-          <div className="h-[80vh] flex justify-center items-center">
-            <span className="h-16 w-16 border-[6px] border-dotted border-red-600 animate-spin rounded-full"></span>
-          </div>
-        }
-      >
-        <BlogContent title={title} />
-      </Suspense>
-    </div>
-  );
+  return { title: `BLOGLAR | ${title}` };
 }
 
-// Content component
 async function BlogContent({ title }: { title: string }) {
   try {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
     const response = await fetch(
-      `${apiUrl}/api/blog?title=${encodeURIComponent(title)}`,
-      { next: { revalidate: 3600 } }
+      `${
+        process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001"
+      }/api/blog?title=${encodeURIComponent(title)}`
     );
 
     if (!response.ok) throw new Error("Failed to fetch blog data");
@@ -99,4 +78,23 @@ async function BlogContent({ title }: { title: string }) {
       </div>
     );
   }
+}
+
+// For Next.js 15, we need to use a simpler type definition for the page component
+export default function BlogDetail({ params }: { params: BlogParams }) {
+  const decodedTitle = decodeURIComponent(params.title);
+
+  return (
+    <div className="container mx-auto py-24 px-6">
+      <Suspense
+        fallback={
+          <div className="h-[80vh] flex justify-center items-center">
+            <span className="h-16 w-16 border-[6px] border-dotted border-red-600 animate-spin rounded-full"></span>
+          </div>
+        }
+      >
+        <BlogContent title={decodedTitle} />
+      </Suspense>
+    </div>
+  );
 }
