@@ -6,13 +6,15 @@ import { CalendarIcon } from "lucide-react";
 import { formatDate } from "@/lib/utils";
 import { ImageGallery } from "@/components/shared/image-gallery";
 
-interface PageParams {
-  params: { title: string };
+interface BlogParams {
+  title: string;
 }
 
 export async function generateMetadata({
   params,
-}: PageParams): Promise<Metadata> {
+}: {
+  params: BlogParams;
+}): Promise<Metadata> {
   const title = decodeURIComponent(params.title);
   return { title: `BLOGLAR | ${title}` };
 }
@@ -20,7 +22,10 @@ export async function generateMetadata({
 async function BlogContent({ title }: { title: string }) {
   try {
     const response = await fetch(
-      `http://localhost:3001/api/blog?title=${encodeURIComponent(title)}`
+      `${
+        process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001"
+      }/api/blog?title=${encodeURIComponent(title)}`
+      // { next: { revalidate: 3600 } }
     );
 
     if (!response.ok) throw new Error("Failed to fetch blog data");
@@ -63,18 +68,23 @@ async function BlogContent({ title }: { title: string }) {
   } catch (error) {
     console.error("Ошибка загрузки блога:", error);
     return (
-      <div className="max-w-5xl mx-auto text-center">
-        <h3 className="text-2xl font-bold text-red-600">Ошибка</h3>
-        <p className="text-gray-400">
-          Не удалось загрузить данные блога. Попробуйте позже или свяжитесь с
-          администратором.
-        </p>
-      </div>
+      <main className="h-screen flex items-center justify-center">
+        <div className="bg-red-50 border border-red-200 text-red-700 p-4 rounded-md">
+          <p className="font-medium">
+            Ma'lumotlarni yuklashda xatolik yuz berdi
+          </p>
+          <p className="text-sm mt-1">
+            Iltimos, keyinroq qayta urinib ko'ring yoki administrator bilan
+            bog'laning.
+          </p>
+        </div>
+      </main>
     );
   }
 }
 
-export default function BlogDetail({ params }: PageParams) {
+// Update the page component to use the correct type
+export default function BlogDetail({ params }: { params: BlogParams }) {
   return (
     <div className="container mx-auto py-24 px-6">
       <Suspense
