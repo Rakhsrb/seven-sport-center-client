@@ -22,7 +22,6 @@ export default function TrainersCarousel({ trainers }: TrainersCarouselProps) {
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(true);
 
-  // Use useCallback to memoize the onSelect function
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
     setCanScrollPrev(emblaApi.canScrollPrev());

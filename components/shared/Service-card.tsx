@@ -31,7 +31,10 @@ export function ServiceCard({
 
         <p className="text-gray-600 mb-6 flex-grow">{description}</p>
 
-        <Link href={'/services'} className="flex items-center text-sm font-medium text-gray-700 group-hover:text-red-600 transition-colors duration-300">
+        <Link
+          href={"/services"}
+          className="flex items-center text-sm font-medium text-gray-700 group-hover:text-red-600 transition-colors duration-300"
+        >
           Batafsil
           <ArrowRight className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" />
         </Link>

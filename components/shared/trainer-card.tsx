@@ -41,13 +41,13 @@ export default function TrainerCard({ member }: TrainerProps) {
               <Award size={18} className="mb-1 text-red-500" />
               <span className="text-xs text-white/70">Darajasi</span>
               <span className="text-xs font-semibold">
-                {member.achievements}
+                {member.level} belbog
               </span>
             </div>
             <div className="flex flex-col items-center">
               <Users size={18} className="mb-1 text-red-500" />
               <span className="text-xs text-white/70">Shogirtlar soni</span>
-              <span className="text-xs font-semibold">{member.clients}</span>
+              <span className="text-xs font-semibold">{member.students}</span>
             </div>
           </div>
         </div>

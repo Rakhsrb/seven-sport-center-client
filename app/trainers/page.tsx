@@ -1,16 +1,16 @@
-import BlogsModule from "@/modules/Blogs";
+import TrainersModule from "@/modules/Trainers";
 import { Metadata } from "next";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "BLOGLAR",
-  description: "Sport yangiliklar.",
+  title: "MURABBIYLAR",
+  description: "Seven sport center murabbiylar jamoasi.",
 };
 
 function page() {
   return (
     <main className="py-20">
-      <BlogsModule />
+      <TrainersModule />
     </main>
   );
 }

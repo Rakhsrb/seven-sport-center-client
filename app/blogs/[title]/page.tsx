@@ -14,7 +14,7 @@ export async function generateMetadata({
   params,
 }: PageParams): Promise<Metadata> {
   const title = decodeURIComponent(params.title);
-  return { title: `Bloglar | ${title}` };
+  return { title: `BLOGLAR | ${title}` };
 }
 
 async function BlogContent({ title }: { title: string }) {

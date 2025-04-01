@@ -9,7 +9,7 @@ export interface BlogPost {
 export interface TrainerMember {
   photo: string;
   fullName: string;
-  achievements: string;
+  level: string;
   experience: string;
-  clients: string;
+  students: string;
 }

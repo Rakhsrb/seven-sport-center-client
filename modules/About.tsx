@@ -7,14 +7,14 @@ export default function About() {
     <section className="min-h-screen relative">
       <div className="container mx-auto px-4 py-12 md:py-24">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <div className="relative">
-            <div className="bg-red-700 rounded-full absolute inset-0 max-w-[600px] max-h-[600px]" />
+          <div className="bg-orange-50 rounded-r-full">
             <Image
-              src="/about.png"
+              src="/azimov.png"
               alt="Dzyudo klubi haqida"
               width={600}
               height={800}
-              className="w-full object-cover relative"
+              unoptimized={true}
+              className="w-full object-cover"
               priority
             />
           </div>
