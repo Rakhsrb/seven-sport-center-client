@@ -22,10 +22,7 @@ export async function generateMetadata({
 async function BlogContent({ title }: { title: string }) {
   try {
     const response = await fetch(
-      `${
-        process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001"
-      }/api/blog?title=${encodeURIComponent(title)}`
-      // { next: { revalidate: 3600 } }
+      `http://localhost:3001/api/blog?title=${encodeURIComponent(title)}`
     );
 
     if (!response.ok) throw new Error("Failed to fetch blog data");
@@ -71,11 +68,11 @@ async function BlogContent({ title }: { title: string }) {
       <main className="h-screen flex items-center justify-center">
         <div className="bg-red-50 border border-red-200 text-red-700 p-4 rounded-md">
           <p className="font-medium">
-            Ma'lumotlarni yuklashda xatolik yuz berdi
+            Ma&apos;lumotlarni yuklashda xatolik yuz berdi
           </p>
           <p className="text-sm mt-1">
-            Iltimos, keyinroq qayta urinib ko'ring yoki administrator bilan
-            bog'laning.
+            Iltimos, keyinroq qayta urinib ko&apos;ring yoki administrator bilan
+            bog&apos;laning.
           </p>
         </div>
       </main>
