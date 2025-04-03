@@ -4,12 +4,12 @@ import Link from "next/link";
 
 export default function About() {
   return (
-    <section className="min-h-screen relative">
+    <section className="relative">
       <div className="container mx-auto px-4 py-12 md:py-24">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div className="bg-orange-50 rounded-r-full">
             <Image
-              src="/azimov.png"
+              src="/azimov.webp"
               alt="Dzyudo klubi haqida"
               width={600}
               height={800}

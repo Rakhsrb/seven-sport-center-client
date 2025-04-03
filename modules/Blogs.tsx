@@ -75,7 +75,7 @@ export default function BlogsModule() {
 
   return (
     <div className="container mx-auto py-16 px-4">
-      <div className="text-center mb-12">
+      <div className="text-center mb-12 max-w-1/2 mx-auto">
         <div className="flex justify-center items-center mb-4">
           <div className="w-16 h-[2px] bg-red-600"></div>
           <span className="mx-4 text-red-600 uppercase text-sm font-medium">
@@ -84,10 +84,10 @@ export default function BlogsModule() {
           <div className="w-16 h-[2px] bg-red-600"></div>
         </div>
 
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#2D2756] max-w-3xl mx-auto leading-tight">
+        <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#2D2756] leading-tight">
           DZYUDO BO&apos;YICHA ENG SO&apos;NGGI YANGILIKLAR VA FOYDALI
           MASLAHATLAR
-        </h2>
+        </h1>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">

@@ -57,7 +57,7 @@ function Header() {
           className="flex items-center gap-2 transition-transform hover:scale-105"
         >
           <Image
-            src={"/mainlogo.png"}
+            src={"/mainlogo.webp"}
             alt={"seven sport center logo"}
             width={"50"}
             height={"50"}
@@ -102,7 +102,7 @@ function Header() {
                       className="flex items-center gap-2 transition-transform hover:scale-105"
                     >
                       <Image
-                        src={"/mainlogo.png"}
+                        src={"/mainlogo.webp"}
                         alt={"seven sport center logo"}
                         width={"50"}
                         height={"50"}

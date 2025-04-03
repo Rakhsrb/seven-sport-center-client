@@ -5,7 +5,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Namangan shahridagi dzyudo klubi | Seven Sport Center",
-  icons: "./mainlogo.png",
+  icons: "./mainlogo.webp",
   description:
     "Seven Sport Center – Namangan shahridagi yetakchi dzyudo klubi. Bolalar uchun mashgulotlar.",
   keywords: "дзюдо, спорт, Namangan, дзюдо клуб, тренировки",

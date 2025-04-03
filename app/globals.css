@@ -128,9 +128,8 @@
 }
 
 .hero {
-  height: 100vh;
   background: linear-gradient(30deg, rgba(0, 0, 0, 0.557), rgba(0, 0, 0, 0.677)),
-    url("../public/bgimage.jpg");
+    url("../public/bgimage.webp");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -142,5 +141,4 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  /* background-attachment: fixed; */
 }
