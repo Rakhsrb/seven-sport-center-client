@@ -73,6 +73,7 @@ export default async function BlogDetail({
       </article>
     );
   } catch (error) {
+    console.log(error);
     return (
       <div className="max-w-5xl mx-auto text-center py-24">
         <h3 className="text-2xl font-bold text-red-600">Ошибка</h3>
