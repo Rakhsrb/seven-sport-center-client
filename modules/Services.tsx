@@ -43,7 +43,7 @@ export default function Services() {
               }}
               className="bg-white border-gray-100 p-8 h-full flex flex-col group hover:border-gray-200 transition-all duration-300 relative"
             >
-              <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gray-100 overflow-hidden">
+              <div className="absolute bottom-0 left-0 right-0 h-[4px] bg-gray-100 overflow-hidden">
                 <div className="h-full bg-red-600 w-0 group-hover:w-full transition-all duration-500 ease-out"></div>
               </div>
 
