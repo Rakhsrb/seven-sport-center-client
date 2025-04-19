@@ -15,7 +15,7 @@ const testimonials = [
     quote:
       "O'g'lim 2 yildan beri bu klubda shug'ullanadi. Jismoniy rivojlanish bilan birga, intizom va hurmat kabi muhim fazilatlarni ham o'rgandi.",
     avatar:
-      "https://t4.ftcdn.net/jpg/06/43/68/65/360_F_643686558_Efl6HB1ITw98bx1PdAd1wy56QpUTMh47.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/8/8b/Valeriy_Konovalyuk_3x4.jpg",
   },
   {
     id: 2,
@@ -24,7 +24,7 @@ const testimonials = [
     quote:
       "Murabbiylar juda malakali va bolalarga g'amxo'rlik bilan yondashadi. Qizim bu yerda nafaqat sport, balki hayotiy ko'nikmalarni ham o'rganmoqda.",
     avatar:
-      "https://t4.ftcdn.net/jpg/06/43/68/65/360_F_643686558_Efl6HB1ITw98bx1PdAd1wy56QpUTMh47.jpg",
+      "https://passport-photo.online/_optimized/prepare2.0498e1e2-opt-1920.WEBP",
   },
   {
     id: 3,
@@ -33,25 +33,7 @@ const testimonials = [
     quote:
       "Bu klubda olgan bilim va tajribam tufayli bugun milliy terma jamoada faoliyat yuritmoqdaman. Eng yaxshi boshlang'ich ta'lim uchun minnatdorman.",
     avatar:
-      "https://t4.ftcdn.net/jpg/06/43/68/65/360_F_643686558_Efl6HB1ITw98bx1PdAd1wy56QpUTMh47.jpg",
-  },
-  {
-    id: 4,
-    name: "Dilnoza Ahmedova",
-    role: "Ona",
-    quote:
-      "Murabbiylar juda malakali va bolalarga g'amxo'rlik bilan yondashadi. Qizim bu yerda nafaqat sport, balki hayotiy ko'nikmalarni ham o'rganmoqda.",
-    avatar:
-      "https://t4.ftcdn.net/jpg/06/43/68/65/360_F_643686558_Efl6HB1ITw98bx1PdAd1wy56QpUTMh47.jpg",
-  },
-  {
-    id: 5,
-    name: "Jahongir Toshmatov",
-    role: "Sobiq o'quvchi",
-    quote:
-      "Bu klubda olgan bilim va tajribam tufayli bugun milliy terma jamoada faoliyat yuritmoqdaman. Eng yaxshi boshlang'ich ta'lim uchun minnatdorman.",
-    avatar:
-      "https://t4.ftcdn.net/jpg/06/43/68/65/360_F_643686558_Efl6HB1ITw98bx1PdAd1wy56QpUTMh47.jpg",
+      "https://s3.eu-west-2.amazonaws.com/static-candidates.democracyclub.org.uk/media/cache/29/9e/299e3c6f9f3b4e0278f7d2dc2b9134ef.jpg",
   },
 ];
 
@@ -132,13 +114,13 @@ function Testimonial() {
                 >
                   <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow h-full mx-4">
                     <div className="flex items-start mb-4">
-                      <div className="mr-4">
+                      <div className="w-16 h-16 mr-4">
                         <Image
                           src={testimonial.avatar || "/placeholder.svg"}
-                          alt={testimonial.name}
-                          width={60}
-                          height={60}
-                          className="rounded-full border-2 border-red-500"
+                          alt={testimonial.name || "User"}
+                          width={64}
+                          height={64}
+                          className="w-16 h-16 object-cover rounded-full border-2 border-red-500"
                         />
                       </div>
                       <div>

@@ -75,7 +75,7 @@ export default function Services() {
 
         <div className="text-center mt-12">
           <Link
-            href="/blogs"
+            href="/services"
             className="inline-flex items-center justify-center px-6 py-3 bg-red-600 text-white font-medium rounded hover:bg-red-700 transition-colors duration-300 group"
           >
             Barcha xizmatlarni ko&apos;rish

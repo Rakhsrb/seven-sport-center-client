@@ -62,8 +62,8 @@ export default function Footer() {
                 <Send size={18} />
               </Link>
             </div>
-            <Link href="tel:+998712007007" className="hover:text-gray-300">
-              +998 71 200 70 07
+            <Link href="tel:+998907521333" className="hover:text-gray-300">
+              +998 90 752 13 33
             </Link>
           </div>
           <div className="flex items-center gap-2 bg-[#222222] rounded-lg px-4 py-2">
@@ -72,7 +72,8 @@ export default function Footer() {
               Namangan, “Pahlavon” sport majmuasi
             </span>
             <Link
-              href="#"
+              href="https://maps.app.goo.gl/CdDtEmMaiktgjwT29"
+              target="_blank"
               className="ml-2 bg-[#333333] px-3 py-1 rounded text-xs hover:bg-gray-700 transition-colors"
             >
               xarita
