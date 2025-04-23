@@ -25,13 +25,19 @@ const SERVICES = [
 
 export default function Services() {
   return (
-    <section className="py-24 relative services">
+    <section className="py-24 relative">
       <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-xl mb-16">
-          <Title>BIZNING XIZMATLARIMIZ</Title>
-          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight">
+        <div className="text-center mb-12">
+          <div className="flex justify-center items-center mb-4">
+            <div className="w-16 h-[2px] bg-red-600"></div>
+            <span className="mx-4 text-red-600 uppercase text-sm font-medium">
+              BIZNING XIZMATLARIMIZ
+            </span>
+            <div className="w-16 h-[2px] bg-red-600"></div>
+          </div>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#2D2756] max-w-3xl mx-auto leading-tight uppercase">
             BIZ SIZGA NIMALARNI <br /> TAKLIF ETAMIZ
-          </h1>
+          </h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -41,7 +47,7 @@ export default function Services() {
               style={{
                 boxShadow: "rgba(111, 100, 100, 0.2) 0px 7px 29px 0px",
               }}
-              className="bg-white border-gray-100 p-8 h-full flex flex-col group hover:border-gray-200 transition-all duration-300 relative"
+              className="bg-white border p-8 h-full flex flex-col rounded-lg group transition-all duration-300 relative"
             >
               <div className="absolute bottom-0 left-0 right-0 h-[4px] bg-gray-100 overflow-hidden">
                 <div className="h-full bg-red-600 w-0 group-hover:w-full transition-all duration-500 ease-out"></div>

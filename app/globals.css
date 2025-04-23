@@ -134,11 +134,3 @@
   background-repeat: no-repeat;
   background-position: center;
 }
-
-.services {
-  background: linear-gradient(30deg, rgba(0, 0, 0, 0.557), rgba(0, 0, 0, 0.677)),
-    url("https://ice-profy.ru/wp-content/uploads/2023/08/1-24.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-}

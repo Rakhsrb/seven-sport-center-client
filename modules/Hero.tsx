@@ -27,7 +27,7 @@ function Hero() {
 
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
-              href="tel:+998907521333"
+              href="tel:+998886801144"
               className="bg-red-600 hover:bg-red-700 text-white py-3 px-8 rounded-full transition-colors uppercase font-medium text-sm inline-flex items-center justify-center"
             >
               Hoziroq qo'shiling

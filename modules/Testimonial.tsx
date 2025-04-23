@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import Title from "@/components/shared/Title";
 import { Quote, ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import useEmblaCarousel from "embla-carousel-react";
@@ -71,7 +70,6 @@ function Testimonial() {
     onSelect();
     emblaApi.on("select", onSelect);
 
-    // Auto-scroll
     const autoplay = setInterval(() => {
       if (emblaApi.canScrollNext()) {
         emblaApi.scrollNext();
@@ -145,7 +143,7 @@ function Testimonial() {
 
           <button
             onClick={scrollPrev}
-            className="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/2 rounded-full p-3 shadow-md bg-red-500 transition-colors z-20"
+            className="absolute top-1/2 left-[20px] -translate-y-1/2 -translate-x-1/2 rounded-full p-3 shadow-md bg-red-500 transition-colors z-20"
             aria-label="Previous testimonial"
           >
             <ChevronLeft className="h-6 w-6 text-white" />
@@ -153,7 +151,7 @@ function Testimonial() {
 
           <button
             onClick={scrollNext}
-            className="absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/2 rounded-full p-3 shadow-md bg-red-500 transition-colors z-20"
+            className="absolute top-1/2 right-[20px] -translate-y-1/2 translate-x-1/2 rounded-full p-3 shadow-md bg-red-500 transition-colors z-20"
             aria-label="Next testimonial"
           >
             <ChevronRight className="h-6 w-6 text-white" />

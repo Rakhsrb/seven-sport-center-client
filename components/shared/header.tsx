@@ -51,7 +51,7 @@ function Header() {
       }`}
       style={headerStyle}
     >
-      <div className="container mx-auto h-20 px-6 flex items-center justify-between gap-4">
+      <div className="container mx-auto h-20 px-6 flex items-center justify-between">
         <Link
           href="/"
           className="flex items-center gap-2 transition-transform hover:scale-105"
@@ -64,14 +64,14 @@ function Header() {
           />
         </Link>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-8">
           <nav className="hidden md:block">
             <ul className="flex items-center gap-8">
               {links.map((item, index) => (
                 <li key={index}>
                   <Link
                     href={item.url}
-                    className="relative text-white text-md font-medium transition-colors hover:text-[#E94D35] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-[#E94D35] after:transition-all hover:after:w-full"
+                    className="relative text-white text-sm font-medium transition-colors hover:text-[#E94D35] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-[#E94D35] after:transition-all hover:after:w-full"
                   >
                     {item.label}
                   </Link>
@@ -81,9 +81,9 @@ function Header() {
           </nav>
           <Link
             href="tel:+998907521333"
-            className="bg-red-600 hover:bg-red-700 text-white py-3 px-8 rounded-md transition-colors uppercase font-medium text-sm"
+            className="bg-red-600 hover:bg-red-700 text-white py-3 px-6 rounded-md transition-colors uppercase font-medium text-sm"
           >
-            Bog&apos;lanish
+            +998 88 680 11 44
           </Link>
 
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -128,10 +128,10 @@ function Header() {
                 </nav>
                 <div className="p-6 border-t border-[#323232] w-full">
                   <Link
-                    href="tel:+998907521333"
+                    href="tel:+998886801144"
                     className="bg-red-600 hover:bg-red-700 text-white py-3 px-8 w-full block text-center rounded-md transition-colors uppercase font-medium text-sm"
                   >
-                    Bog&apos;lanish
+                    +998 88 680 11 44
                   </Link>
                 </div>
               </div>

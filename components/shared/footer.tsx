@@ -62,8 +62,8 @@ export default function Footer() {
                 <Send size={18} />
               </Link>
             </div>
-            <Link href="tel:+998907521333" className="hover:text-gray-300">
-              +998 90 752 13 33
+            <Link href="tel:+998886801144" className="hover:text-gray-300">
+              +998 88 680 11 44
             </Link>
           </div>
           <div className="flex items-center gap-2 bg-[#222222] rounded-lg px-4 py-2">
